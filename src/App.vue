@@ -1,36 +1,25 @@
 <template>
   <div>
-    <form-helper>
-      <div slot="form-header">
-        <h3>Title of form</h3>
-        <p>Information about form</p>
-      </div>
-
-      <div slot="form-fields">
-        <label for="name">Name: </label>
-        <input type="text" placeholder="name" id="name" required>
-        <label for="password">Password :</label>
-        <input type="password" placeholder="password" id="password" required>
-      </div>
-
-      <div slot="form-controls">
-        <button v-on:click="handleSubmit">Submit</button>
-      </div>
-
-    </form-helper>
+    <button @click="component='form-one'">Show Form One</button>
+    <button @click="component='form-two'">Show Form One</button>
+    <keep-alive>
+      <component v-bind:is="component"></component>
+    </keep-alive>
   </div>
 </template>
 
 <script>
-import FormHelper from './components/FormHelper.vue'
+import FormOne from './components/FormOne.vue'
+import FormTwo from './components/FormTwo.vue'
 export default {
 
   components:{
-    'form-helper': FormHelper
+    'form-one': FormOne,
+    'form-two': FormTwo
   },
   data(){
     return{
-      title: "This is slot Title"
+      component:'form-one'
     }
   },
   methods:{
