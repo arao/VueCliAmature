@@ -12,16 +12,19 @@
 <script>
     export default {
         name: "Ninjas",
+      // props:['ninjas'],
+      props:{
+          ninjas:{type:Array, required:true}
+      },
+
       data(){
           return {
-            ninjas:[
-              {name: 'Ryu', speciality:"Vue Components", show: false},
-              {name: 'Crystal', speciality:"HTML Wizardry", show: false},
-              {name: 'Hitoshi', speciality:"Click Event", show: false},
-              {name: 'Tango', speciality:"Conditional", show: false},
-              {name: 'Kami', speciality:"WebPack", show: false},
-              {name: 'Yoshi', speciality:"Data Diggin", show: false}
-            ]
+
+          }
+      },
+      methods:{
+          test(){
+            console.log(this.ninjas);
           }
       }
     }
