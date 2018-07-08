@@ -1,60 +1,41 @@
 <template>
   <div>
-    <app-header v-bind:title="title" @changeTitle="updateTitle($event)"></app-header>
-    <app-ninjas v-bind:ninjas="ninjas"></app-ninjas>
-    <app-footer v-bind:title="title"></app-footer>
+    <form-helper>
+      <div slot="form-header">
+        <h3>Title of form</h3>
+        <p>Information about form</p>
+      </div>
+
+      <div slot="form-fields">
+        <label for="name">Name: </label>
+        <input type="text" placeholder="name" id="name" required>
+        <label for="password">Password :</label>
+        <input type="password" placeholder="password" id="password" required>
+      </div>
+
+      <div slot="form-controls">
+        <button v-on:click="handleSubmit">Submit</button>
+      </div>
+
+    </form-helper>
   </div>
 </template>
 
 <script>
-import Header from './components/Header.vue'
-import Ninjas from './components/Ninjas.vue'
-import Footer from './components/Footer.vue'
+import FormHelper from './components/FormHelper.vue'
 export default {
-  /*
-  lifecycle sequence
-  new vue()
-  -----------------> beforeCreated           :: does not have access to data and other functions
-  observe data
-  init events
-  -----------------> created
-  ::template and data created
-  ----------------->beforeMount
-  mount dom
-  ----------------->mounted
-  mounted
-  if change
-  -------------> beforeUpdate
-  apply update
-  -------------> updated
-  call destroy
-  -----------------> beforeDestroy
-  teardown and call destroy
-  ----------------->destroyed
-
-   */
 
   components:{
-    'app-header':Header,
-    'app-ninjas': Ninjas,
-    'app-footer':Footer
+    'form-helper': FormHelper
   },
   data(){
     return{
-      ninjas:[
-        {name: 'Ryu', speciality:"Vue Components", show: false},
-        {name: 'Crystal', speciality:"HTML Wizardry", show: false},
-        {name: 'Hitoshi', speciality:"Click Event", show: false},
-        {name: 'Tango', speciality:"Conditional", show: false},
-        {name: 'Kami', speciality:"WebPack", show: false},
-        {name: 'Yoshi', speciality:"Data Diggin", show: false}
-      ],
-      title: "Vue Ninjas"
+      title: "This is slot Title"
     }
   },
   methods:{
-    updateTitle(newTitle){
-      this.title = newTitle;
+    handleSubmit(){
+
     }
   }
 }
