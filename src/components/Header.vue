@@ -1,26 +1,29 @@
 <template>
     <header>
       <h1 @click="changeTitle">
-        {{title}}
+        {{ myTitle }}
       </h1>
     </header>
 </template>
 
 <script>
+  import { bus } from '../main'
     export default {
       props:{
         title:{type:String}
       },
       data(){
           return  {
-
+            myTitle : this.title
+            // this extra variable is use to privent changing props variable since they are pass by reference
           }
       },
       methods:{
         changeTitle(){
-          this.$emit('changeTitle', 'Vue Wizard')
+          this.myTitle = 'Vue Wizard';
+          bus.$emit('changeTitle', 'Vue Wizard')
         }
-      }
+      },
     }
 </script>
 

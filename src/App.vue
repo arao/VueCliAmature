@@ -2,7 +2,6 @@
   <div>
     <app-header v-bind:title="title" @changeTitle="updateTitle($event)"></app-header>
     <app-ninjas v-bind:ninjas="ninjas"></app-ninjas>
-    <app-ninjas v-bind:ninjas="ninjas"></app-ninjas>
     <app-footer v-bind:title="title"></app-footer>
   </div>
 </template>

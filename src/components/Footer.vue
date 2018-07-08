@@ -1,22 +1,30 @@
 <template>
   <div>
     <footer>
-      <p>{{ copyright }} {{title}}</p>
+      <p>{{ copyright }} {{myTitle}}</p>
     </footer>
   </div>
 </template>
 
 <script>
-    export default {
-      props:{
-        title:{type:String}
-      },
-      data(){
-          return{
-            copyright:"Copyright 2018"
-          }
+  import { bus } from '../main'
+  export default {
+    props: {
+      title: {type: String}
+    },
+    data() {
+      return {
+        copyright: "Copyright 2018",
+        myTitle : this.title
+        // this extra variable is use to privent changing props variable since they are pass by reference
       }
+    },
+    created(){
+      bus.$on('changeTitle', (newTitle)=>{
+        this.myTitle = newTitle;
+      })
     }
+  }
 </script>
 
 <style scoped>
