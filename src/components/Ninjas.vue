@@ -6,6 +6,7 @@
         <h3 v-show="ninja.show">{{ninja.speciality}}</h3>
       </li>
     </ul>
+    <button v-on:click="deleteNinja">Delete</button>
   </div>
 </template>
 
@@ -25,7 +26,10 @@
       methods:{
           test(){
             console.log(this.ninjas);
-          }
+          },
+        deleteNinja(){
+            this.ninjas.pop();
+        }
       }
     }
 </script>

@@ -1,6 +1,6 @@
 <template>
     <header>
-      <h1>
+      <h1 @click="changeTitle">
         {{title}}
       </h1>
     </header>
@@ -8,11 +8,19 @@
 
 <script>
     export default {
-        data(){
+      props:{
+        title:{type:String}
+      },
+      data(){
           return  {
-            title: "Vue Ninjas"
+
           }
+      },
+      methods:{
+        changeTitle(){
+          this.title = "Title changed"
         }
+      }
     }
 </script>
 
