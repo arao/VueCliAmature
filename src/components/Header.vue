@@ -18,7 +18,7 @@
       },
       methods:{
         changeTitle(){
-          this.title = "Title changed"
+          this.$emit('changeTitle', 'Vue Wizard')
         }
       }
     }
