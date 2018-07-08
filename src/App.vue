@@ -11,6 +11,29 @@ import Header from './components/Header.vue'
 import Ninjas from './components/Ninjas.vue'
 import Footer from './components/Footer.vue'
 export default {
+  /*
+  lifecycle sequence
+  new vue()
+  -----------------> beforeCreated           :: does not have access to data and other functions
+  observe data
+  init events
+  -----------------> created
+  ::template and data created
+  ----------------->beforeMount
+  mount dom
+  ----------------->mounted
+  mounted
+  if change
+  -------------> beforeUpdate
+  apply update
+  -------------> updated
+  call destroy
+  -----------------> beforeDestroy
+  teardown and call destroy
+  ----------------->destroyed
+
+   */
+
   components:{
     'app-header':Header,
     'app-ninjas': Ninjas,

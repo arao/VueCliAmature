@@ -24,6 +24,24 @@
           bus.$emit('changeTitle', 'Vue Wizard')
         }
       },
+      beforeCreate(){
+        alert('before created')
+      },
+      created(){
+        alert('created');
+      },
+      beforeMount(){
+        alert('before mounted');
+      },
+      mounted(){
+        alert('mounted');
+      },
+      beforeUpdate(){
+        alert('before Updated');
+      },
+      updated(){
+        alert('updated');
+      }
     }
 </script>
 
