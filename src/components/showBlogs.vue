@@ -1,9 +1,10 @@
-<template>
-  <div id="show-blogs">
+<template >
+  <div v-theme:column="'narrow'" id="show-blogs">
     <h1>All Blog Article</h1>
-    <div v-for="blog in this.blogs" class="single-blog">
-        <h2>{{blog.title}}</h2>
-        <article>{{blog.body}}</article>
+    <input type="text" v-model="search" class="search-bar" placeholder="search blogs">
+    <div v-for="blog in filterBlogs" class="single-blog">
+        <h2 v-rainbow> {{blog.title | to-uppercase}}</h2>
+        <article>{{blog.body | snippet }}</article>
     </div>
   </div>
 </template>
@@ -13,11 +14,19 @@
       name: "showBlogs",
       data(){
         return {
-          blogs :[]
+          blogs :[],
+          search:""
         }
       },
       methods:{
 
+      },
+      computed:{
+        filterBlogs(){
+            return this.blogs.filter((blog)=>{
+            return blog.title.includes(this.search);
+          })
+        }
       },
       created(){
           this.$http.get('https://jsonplaceholder.typicode.com/posts')
@@ -44,5 +53,10 @@
     background: #eee;
 
     box-sizing: border-box;
+  }
+  .search-bar{
+    position: relative;
+    left : 100%;
+    transform: translateX(-100%);
   }
 </style>
